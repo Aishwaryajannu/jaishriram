@@ -2,10 +2,9 @@
   "name": "linkedin-poster-service",
   "version": "1.0.0",
   "main": "linkedin-service.js",
-  "scripts": {
-    "postinstall": "npx playwright install chromium",
-    "start": "node linkedin-service.js"
-  },
+"scripts": {
+  "start": "node linkedin-service.js"
+},
   "dependencies": {
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
