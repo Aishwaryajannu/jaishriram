@@ -74,7 +74,6 @@ app.post('/post-to-linkedin', async (req, res) => {
     
     browser = await chromium.launch({ 
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     });
 
     const context = await browser.newContext({
@@ -409,7 +408,7 @@ app.get('/health', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`LinkedIn poster service running on port ${PORT}`);
   console.log(`Screenshots will be saved to: ${screenshotDir}`);
 });
