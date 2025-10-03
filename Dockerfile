@@ -1,5 +1,5 @@
 # Use official Playwright image with Chromium preinstalled
-FROM mcr.microsoft.com/playwright:focal
+FROM mcr.microsoft.com/playwright:v1.55.0-focal
 
 # Set working directory
 WORKDIR /app
