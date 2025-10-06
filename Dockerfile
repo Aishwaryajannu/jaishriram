@@ -1,23 +1,24 @@
-# Use Playwright image matching your package.json version
 FROM mcr.microsoft.com/playwright:v1.55.1-jammy
 
-# Set working directory
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install npm dependencies
+RUN npm ci --only=production
+
+# Install Playwright browsers explicitly
+RUN npx playwright install chromium
+RUN npx playwright install-deps chromium
 
 # Copy application code
 COPY . .
 
-# Expose port
-EXPOSE 3000
+# Create screenshots directory
+RUN mkdir -p /app/screenshots
 
-# Set environment variable for PORT
+EXPOSE 3000
 ENV PORT=3000
 
-# Start the application
 CMD ["node", "linkedin-service.js"]
