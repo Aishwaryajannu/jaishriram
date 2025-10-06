@@ -1,5 +1,5 @@
 # Use official Playwright image with Chromium preinstalled
-FROM mcr.microsoft.com/playwright:v1.55.0-focal
+FROM mcr.microsoft.com/playwright:v1.48.0-jammy
 
 # Set working directory
 WORKDIR /app
@@ -10,12 +10,14 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the code
+# Copy application code
 COPY . .
 
 # Expose port
-ENV PORT=10000
-EXPOSE 10000
+EXPOSE 3000
 
-# Run the service
+# Set environment variable for PORT
+ENV PORT=3000
+
+# Start the application
 CMD ["node", "linkedin-service.js"]
